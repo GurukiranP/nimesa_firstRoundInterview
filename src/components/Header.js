@@ -26,8 +26,6 @@ const Header = (props) => {
             <div className="headerName">{headerName}</div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <div className="item-img " ref={ref}>
-                    <img src={userData.profilepicture} alt="profile-pic" onClick={handleImg} />
-
                     <Overlay
                         show={isPopup}
                         target={target}
@@ -36,9 +34,6 @@ const Header = (props) => {
                         containerPadding={20
                         }>
                         <Popover id="popover-contained">
-                            <div className="item-img signOutImg">
-                                <img variant="top" src={userData.profilepicture} alt="profile-pic" />
-                            </div>
                             <div className="popoverBody">
                                 <p className="my-1">{userData.name}</p>
                                 <p className="text-secondary my-1">{userData.email}</p>
@@ -47,7 +42,7 @@ const Header = (props) => {
                         </Popover>
                     </Overlay>
                 </div>
-                <span>{userData.name}</span>
+                <span onClick={handleImg}>👤<span className="headerName">{userData.name}</span></span>
             </div>
         </div >
     )

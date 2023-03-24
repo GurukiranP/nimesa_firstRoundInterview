@@ -1,5 +1,15 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+.headerName {
+  color: #4b06b9;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: orange;
+  }
+}
+
 .hero-container {
   background-image: linear-gradient(0deg, #4b06b9, #2b52e0);
   position: relative;
@@ -217,19 +227,6 @@
   align-items: center;
   font-size: 1rem;
   color: #555;
-
-  .profile-image {
-    height: 13rem;
-    width: 13rem;
-    margin: 0.25rem;
-
-    img {
-      object-fit: cover;
-      border-radius: 50%;
-      height: 100%;
-      width: 100%;
-    }
-  }
 }
 
 .profile-map-cont {

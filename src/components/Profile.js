@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useParams } from "react-router-dom";
-import { usersList } from './Home/homeSlice';
+import { usersList, usersPosts } from './Home/homeSlice';
 import { useDispatch } from 'react-redux';
 import UserData from './UserData';
 import Sidebar from './Sidebar';
@@ -13,25 +13,33 @@ const Profile = (props) => {
     const dispatch = useDispatch();
 
     const [isVal, setVal] = useState();
+    const [isVal2, setVal2] = useState();
 
     useEffect(() => {
         dispatch(usersList()).then((response) => {
-            response.payload.users.filter(item => {
+            response.payload.filter(item => {
                 if (parseInt(item.id) === parseInt(userId)) {
                     setVal(item)
                 }
             })
         });
+        dispatch(usersPosts()).then((response) => {
+            response.payload.filter(item => {
+                if (parseInt(item.id) === parseInt(userId)) {
+                    setVal2(item)
+                }
+            })
+        });
     }, [dispatch]);
-    
+
     return (
         <div>
-            {isVal && <div className="profile-cont">
+            {isVal && isVal2 && <div className="profile-cont">
                 <Sidebar userData={isVal} />
                 <div className="main-cont">
                     <Header userData={isVal} />
                     <Routes>
-                        <Route path={`/user/${isVal.id}/profile`} element={<UserData userData={isVal} />} />
+                        <Route path={`/user/${isVal.id}/profile`} element={<UserData userData={isVal} data={isVal2}/>} />
                         <Route path={`/user/${isVal.id}/posts`} element={<ComingSoon />} />
                         <Route path={`/user/${isVal.id}/gallery`} element={<ComingSoon />} />
                         <Route path={`/user/${isVal.id}/todo`} element={<ComingSoon />} />

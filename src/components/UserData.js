@@ -1,16 +1,12 @@
 import React from 'react';
-import MapComponent from './Map';
 
 const UserData = (props) => {
 
     let userData = props.userData;
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex' }} className="my-5">
             <div className="profile-det-cont">
-                <div className="profile-image">
-                    <img src={userData.profilepicture} alt="profile pic" />
-                </div>
                 <div>
                     <strong>{userData.name}</strong>
                 </div>
@@ -56,9 +52,8 @@ const UserData = (props) => {
             </div>
             <div className="profile-map-cont ">
                 <div className="profile-det-cont">
-                    <div className="det-item ">
+                    <div className="det-item">
                         <div className="label">Address </div>
-                        <div className="value"></div>
                     </div>
                     <div className="det-item">
                         <div className="label">Street : </div>
@@ -85,7 +80,6 @@ const UserData = (props) => {
                         </div>
                     </div>
                 </div>
-                <MapComponent />
             </div>
         </div>
     )
